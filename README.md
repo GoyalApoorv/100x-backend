@@ -1,4 +1,4 @@
-# 100x Microblogging Schema Design
+# Microblogging Schema Design
 
 ## 1. Users Table (table name: users)
 - **id**: Unique identifier for each user (Primary Key, INT).
@@ -15,8 +15,8 @@ Role: The Users table is the central entity in the schema. It stores all the ess
 
 #### Relationships:
 - To Posts: A one-to-many relationship exists between Users and Posts. A single user can create multiple posts.
-- To Follows: Users have a self-referencing many-to-many relationship in the Follows table. A user can follow many other users and be followed by many.
 - To Likes: There is a one-to-many relationship between Users and Likes. A user can like multiple posts.
+- To Followers: Users have a many-to-many relationship with Followers. A user can have multiple followers, and a follower can follow multiple users.
 
 ## 2. Posts Table (table name: posts)
 - **id**: Unique identifier for each post (Primary Key, INT).
@@ -32,4 +32,29 @@ Role: This table holds the content posted by users. It includes information abou
 #### Relationships:
 - From Users: Posts are linked to Users through the user_id. Each post is associated with the user who created it.
 - To Likes: Posts have a one-to-many relationship with Likes. A single post can be liked by multiple users.
-- Self-Referencing: The Posts table has a self-referencing relationship for handling replies. A post (reply) can reference another post as its origi
+- Self-Referencing: The Posts table has a self-referencing relationship for handling replies. A post (reply) can reference another post as its original post.
+
+## 3. Likes Table (table name: likes)
+- **id**: Unique identifier for each like (Primary Key, INT).
+- **user_id**: ID of the user who liked the post (Foreign Key referencing users.id, INT).
+- **post_id**: ID of the post liked (Foreign Key referencing posts.id, INT).
+- **like_time**: Time when the like was made (DATETIME).
+
+### Description
+Role: The Likes table records instances where users like posts.
+
+#### Relationships:
+- To Users: Likes are associated with Users through the user_id. Each like is linked to the user who performed it.
+- To Posts: Likes are associated with Posts through the post_id. Each like is linked to the post that was liked.
+
+## 4. Followers Table (table name: followers)
+- **id**: Unique identifier for each follower (Primary Key, INT).
+- **follower_id**: ID of the follower (Foreign Key referencing users.id, INT).
+- **followed_id**: ID of the user being followed (Foreign Key referencing users.id, INT).
+- **follow_time**: Time when the follow action was performed (DATETIME).
+
+### Description
+Role: The Followers table represents the relationships between users where one user follows another.
+
+#### Relationships:
+- To Users: Followers are associated with Users through both follower_id and followed_id. Each follower record links to the user who is following (follower_id) and the user who is being followed (followed_id).
