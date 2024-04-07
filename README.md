@@ -3,6 +3,7 @@
 ## 1. Users Table (table name: users)
 - **id**: Unique identifier for each user (Primary Key, INT).
 - **username**: User's chosen name (VARCHAR).
+- **display_name**: User's display name (VARCHAR).
 - **email**: User's email address (VARCHAR).
 - **bio**: Short user biography (VARCHAR).
 - **profile_pic**: Link to profile picture (VARCHAR).
