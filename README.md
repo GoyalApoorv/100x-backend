@@ -4,11 +4,9 @@
 - **id**: Unique identifier for each user (Primary Key, INT).
 - **username**: User's chosen name (VARCHAR).
 - **email**: User's email address (VARCHAR).
-- **password_hash**: Hashed password for security (VARCHAR).
 - **bio**: Short user biography (VARCHAR).
 - **profile_pic**: Link to profile picture (VARCHAR).
 - **join_date**: Date the user joined (DATETIME).
-- **location**: Optional user location (VARCHAR).
 
 ### Description
 Role: The Users table is the central entity in the schema. It stores all the essential information about the users of the platform, such as their username, email, bio, and other personal details.
