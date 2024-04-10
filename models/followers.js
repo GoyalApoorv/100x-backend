@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     follow_time: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'followers',
+    modelName: 'Followers',
   });
   return followers;
 };

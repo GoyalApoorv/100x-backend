@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     like_time: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'likes',
+    modelName: 'Likes',
   });
   return likes;
 };
